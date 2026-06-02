@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { metrics as defaultMetrics, subjects as initialSubjects, reminders as initialReminders, tasks as initialTasks, exams as initialExams } from '../data/mockData';
+import { metrics as defaultMetrics, subjects as initialSubjects, reminders as initialReminders, tasks as initialTasks } from '../data/mockData';
 import { computeMetrics } from './computeMetrics';
 
 // Helper to get YYYY-MM-DD string in local time

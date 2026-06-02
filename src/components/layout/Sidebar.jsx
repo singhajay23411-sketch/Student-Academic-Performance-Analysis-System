@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import useStore from '../../store/useStore';
 
 const navItems = [

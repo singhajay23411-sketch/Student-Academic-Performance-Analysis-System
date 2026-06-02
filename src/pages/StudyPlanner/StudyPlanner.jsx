@@ -5,7 +5,6 @@ import TaskModal from '../../components/modals/TaskModal';
 
 export default function StudyPlanner() {
   const subjects = useStore((state) => state.subjects) || [];
-  const aiInsights = useStore((state) => state.aiInsights) || {};
   const tasks = useStore((state) => state.tasks) || [];
   const addTask = useStore((state) => state.addTask);
   const updateTask = useStore((state) => state.updateTask);
@@ -612,7 +611,7 @@ export default function StudyPlanner() {
               <span className="material-symbols-outlined text-primary text-sm">low_priority</span>
             </div>
             <div className="space-y-sm overflow-y-auto max-h-[300px] flex-1 pr-xs custom-scrollbar">
-              {[...subjects].map((sub, i) => {
+              {[...subjects].map((sub) => {
                 const currentPriority = sub.priority || 'Medium';
                 const color = currentPriority === 'High' ? 'error' : currentPriority === 'Medium' ? 'secondary' : 'primary';
                 const letter = currentPriority.charAt(0);

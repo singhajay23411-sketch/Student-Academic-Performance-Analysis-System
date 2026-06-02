@@ -44,9 +44,8 @@ const BADGE_DEFS = [
 // ─── CSV Generator ────────────────────────────────────────────────────────────
 
 const generateCSV = (data) => {
-  const { profile, metrics, subjects, focusStats, studyLog, milestones, aiInsights } = data;
+  const { profile, metrics, subjects, focusStats, milestones } = data;
   const snap = { metrics, subjects, focusStats };
-  const unlockedBadges = BADGE_DEFS.filter(b => b.check(snap));
 
   const sections = [];
 
@@ -115,7 +114,7 @@ const generateCSV = (data) => {
 // ─── JSON Generator ───────────────────────────────────────────────────────────
 
 const generateJSON = (data) => {
-  const { profile, metrics, subjects, focusStats, studyLog, milestones, aiInsights } = data;
+  const { profile, metrics, subjects, focusStats, milestones, aiInsights } = data;
   const snap = { metrics, subjects, focusStats };
   const avgAttn = subjects.length ? Math.round(subjects.reduce((a,s)=>a+(s.attendance||0),0)/subjects.length) : 0;
 
@@ -191,7 +190,7 @@ const generateJSON = (data) => {
 // This avoids any dependency installation while producing a professional report.
 
 const generatePDFHTML = (data) => {
-  const { profile, metrics, subjects, focusStats, studyLog, milestones, aiInsights } = data;
+  const { profile, metrics, subjects, focusStats, milestones, aiInsights } = data;
   const snap = { metrics, subjects, focusStats };
   const unlockedBadges = BADGE_DEFS.filter(b=>b.check(snap));
   const avgAttn = subjects.length ? Math.round(subjects.reduce((a,s)=>a+(s.attendance||0),0)/subjects.length) : 0;

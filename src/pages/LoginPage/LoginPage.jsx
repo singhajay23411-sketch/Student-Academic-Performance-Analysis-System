@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import useStore from '../../store/useStore';
 import './LoginPage.css';
 
@@ -48,17 +47,7 @@ export default function LoginPage() {
   const [pulling, setPulling] = useState(false);
   const containerRef = useRef(null);
   
-  const navigate = useNavigate();
   const login = useStore((state) => state.login);
-  const isAuthenticated = useStore((state) => state.isAuthenticated);
-
-  // Navigate to dashboard only AFTER the store has committed isAuthenticated=true.
-  // This prevents the race where navigate() fires before the Zustand set() resolves.
-  useEffect(() => {
-    if (isAuthenticated) {
-      navigate('/dashboard', { replace: true });
-    }
-  }, [isAuthenticated, navigate]);
 
   useEffect(() => {
     document.documentElement.classList.remove('dark');
@@ -88,13 +77,11 @@ export default function LoginPage() {
 
   const handleLogin = () => {
     login(loginEmail);
-    // navigation is handled by the isAuthenticated useEffect above
   };
 
   const handleSignup = () => {
     if (validatePassword() && password === confirmPassword) {
         login(signupEmail, signupName);
-        // navigation is handled by the isAuthenticated useEffect above
     }
   };
 

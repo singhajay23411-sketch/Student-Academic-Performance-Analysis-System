@@ -6,7 +6,6 @@ export default function RecommendationModal({ isOpen, onClose }) {
   const metrics = useStore((state) => state.metrics) || {};
 
   const predictedCGPA = metrics.predictedCGPA || 0.00;
-  const targetCGPA = metrics.targetCGPA || 8.50;
 
   // 1. Math and logical values for dynamic AI overview
   const avgAttendance = subjects.length > 0 

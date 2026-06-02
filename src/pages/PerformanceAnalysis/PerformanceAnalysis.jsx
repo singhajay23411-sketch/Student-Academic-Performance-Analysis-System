@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import useStore from '../../store/useStore';
-import { motion } from 'framer-motion';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, Cell, PieChart, Pie, Legend } from 'recharts';
 
 export default function PerformanceAnalysis() {
@@ -95,7 +94,7 @@ export default function PerformanceAnalysis() {
     e.dataTransfer.effectAllowed = 'move';
   };
 
-  const handleDragOver = (e, index) => {
+  const handleDragOver = (e) => {
     e.preventDefault();
   };
 
