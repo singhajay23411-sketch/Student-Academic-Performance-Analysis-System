@@ -1,0 +1,524 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>SAPAS | Student Analytics Platform</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#765c00",
+                        "on-background": "#201b11",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary-fixed-dim": "#e9c258",
+                        "tertiary-fixed-dim": "#fcbc24",
+                        "outline-variant": "#d4c4ac",
+                        "on-primary-container": "#654800",
+                        "on-error": "#ffffff",
+                        "on-secondary-fixed-variant": "#584400",
+                        "on-surface": "#201b11",
+                        "tertiary-fixed": "#ffdea5",
+                        "secondary": "#755b00",
+                        "surface-container-low": "#fef2e1",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#5d4200",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#362f25",
+                        "tertiary": "#7b5800",
+                        "primary": "#7b5800",
+                        "secondary-container": "#fed669",
+                        "surface-bright": "#fff8f3",
+                        "on-primary-fixed": "#271900",
+                        "on-tertiary-fixed": "#261900",
+                        "inverse-on-surface": "#fcefde",
+                        "error": "#ba1a1a",
+                        "surface-container-highest": "#ede1d1",
+                        "on-tertiary-container": "#654800",
+                        "background": "#fff8f3",
+                        "tertiary-container": "#f4b419",
+                        "on-surface-variant": "#504533",
+                        "on-primary": "#ffffff",
+                        "surface-variant": "#ede1d1",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#ffdf90",
+                        "primary-container": "#f5b300",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#f3e6d6",
+                        "inverse-primary": "#febb14",
+                        "surface-container": "#f9ecdc",
+                        "surface": "#fff8f3",
+                        "primary-fixed-dim": "#febb14",
+                        "primary-fixed": "#ffdea5",
+                        "outline": "#827560",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#e4d8c8",
+                        "on-tertiary-fixed-variant": "#5d4200",
+                        "surface-tint": "#7b5800"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-padding": "40px",
+                        "unit": "8px",
+                        "stack-sm": "12px",
+                        "gutter": "24px",
+                        "stack-md": "24px",
+                        "stack-lg": "48px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Hanken Grotesk"],
+                        "label-md": ["Hanken Grotesk"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, #fff8f3 0%, #f6efe6 100%);
+        }
+        .primary-btn {
+            background: linear-gradient(135deg, #FFD76A, #F5B300);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-dot::after {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 2px;
+            background: #7b5800;
+            margin: 4px auto 0;
+            border-radius: 1px;
+        }
+        .nav-link {
+            position: relative;
+            padding: 10px 14px;
+            border-radius: 9999px;
+            transition: color 220ms ease, background-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
+        }
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(255, 215, 106, 0.22), rgba(245, 179, 0, 0.12));
+            opacity: 0;
+            transform: scale(0.9);
+            transition: opacity 220ms ease, transform 220ms ease;
+            z-index: -1;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 4px;
+            width: 0;
+            height: 2px;
+            border-radius: 9999px;
+            background: #7b5800;
+            transform: translateX(-50%);
+            transition: width 220ms ease;
+        }
+        .nav-link:hover,
+        .nav-link.is-active {
+            color: #7b5800;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px rgba(123, 88, 0, 0.08);
+        }
+        .nav-link:hover::before,
+        .nav-link.is-active::before {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .nav-link:hover::after,
+        .nav-link.is-active::after {
+            width: 20px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<header class="fixed top-0 w-full z-50 bg-surface/72 backdrop-blur-[18px] border-b border-white/25 shadow-[0_10px_40px_rgba(15,23,42,0.08)]">
+<div class="flex justify-between items-center px-container-padding h-20 w-full max-w-[1440px] mx-auto">
+<div class="flex items-center gap-2 z-10">
+<div class="flex items-center">
+<img alt="SAPAS Logo" class="h-10 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ADBb0ui2bg0Nv1Az7wPmalIUnHmHj86SHPI8Uw5SruPhbMvGEq-FgOoTFvKcVPgTDOwDpvj3-ZwSPkPycLILRqdm9CWXx-cJ5ESkHtL5EYuVYQi7hcGAhQtPKxe6HPwAcdN2nYyWuRmEFCLn3psgjn7Sz9qceYK9diU6M0UCBpifytFfCuarjtHazYRukWxLLgIgqR71v5LzkyDVnNb7cKiCWShzPBCD3ODqXDunzHu5yjjuftyJSq1tXy35Hg">
+</div>
+<div>
+<span class="font-headline-md font-extrabold text-on-background tracking-tight">SAPAS</span>
+<p class="font-label-sm text-[10px] tracking-widest text-on-surface-variant -mt-1 uppercase">STUDENT ANALYTICS</p>
+</div>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="nav-link font-label-md text-primary font-bold is-active" href="#dashboard-preview">Dashboard</a>
+<a class="nav-link font-label-md text-on-surface-variant font-bold" href="#performance-analytics">Performance</a>
+<a class="nav-link font-label-md text-on-surface-variant font-bold" href="#study-planner">Study Planner</a>
+<a class="nav-link font-label-md text-on-surface-variant font-bold" href="#ai-insights">AI Insights</a>
+<a class="nav-link font-label-md text-on-surface-variant font-bold" href="#about-sapas">About</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="font-label-md text-primary bg-primary/5 border border-primary/20 hover:bg-primary/10 hover:border-primary/40 px-6 py-2.5 rounded-full transition-all duration-200 ease-in-out">
+                Log In
+            </button>
+</div>
+</div>
+</header>
+<main class="relative">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] pt-32 pb-20 overflow-hidden flex items-center">
+<div class="absolute inset-0 z-0 transition-all duration-700 ease-out opacity-100 translate-y-0">
+<img alt="Interior Design Context" class="w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiR9zNKs-2At47KuIqf2YrNK5EeZ0YU8EiBJDIjJw-cZKJb08NTud2v2Ej8wYy8TuOdZJImSo1tBBMaKBYsHW_ag8t3vQx2So8O75ko_8icxMdq51eo8L4GtKpqwht95O0lZ5jsaRKDjfqvxxyfUiOCXdcFj5gd1yOmSY0BcoFTqu-mkzkNAvD6Bw8gYtNahSL_bPEGZMY1E_-qfTgvxmIQ_bnUmP3IZmBWX7MlSVGxV2NzxsHNiWpxVnKq0PbDdRdZk_hlYYoow">
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/95 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-[1440px] mx-auto px-container-padding grid md:grid-cols-2 gap-stack-lg items-center transition-all duration-700 ease-out opacity-100 translate-y-0">
+<div class="max-w-xl">
+<div class="inline-block bg-tertiary-fixed px-3 py-1 rounded-full mb-stack-md">
+<span class="font-label-sm text-on-tertiary-fixed-variant uppercase tracking-wider">AI POWERED STUDENT ANALYTICS</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-background mb-stack-md leading-tight">
+                    Track Performance, <span class="text-primary">Plan Smarter</span>, Improve With AI.
+                </h1>
+<p class="font-body-lg text-on-surface-variant mb-stack-lg max-w-md">
+                    Track academic performance, manage study goals, and receive AI-powered improvement insights in one smart student analytics platform.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="primary-btn px-8 py-4 rounded-full font-label-md text-on-primary-fixed flex items-center gap-2 hover:scale-[0.98] transition-transform">
+                        Open Dashboard
+                        <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<button class="glass-card px-8 py-4 rounded-full font-label-md text-primary flex items-center gap-2 hover:bg-surface transition-colors border-primary/20">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: &quot;FILL&quot; 1;">play_circle</span>
+                        View Features
+                    </button>
+</div>
+</div>
+<div class="hidden md:block h-full relative">
+<div class="absolute top-0 right-0 grid grid-cols-4 gap-4 opacity-20">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Dashboard Preview Section -->
+<section class="py-20 bg-surface-container-low/50" id="dashboard-preview">
+<div class="max-w-[1440px] mx-auto px-container-padding text-center mb-stack-lg transition-all duration-700 ease-out opacity-100 translate-y-0">
+<h2 class="font-headline-lg text-on-surface mb-4">Your Academic Command Center</h2>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto">Get a birds-eye view of your entire educational journey with our beautiful, glassmorphic analytics interface.</p>
+</div>
+<div class="max-w-[1200px] mx-auto px-container-padding transition-all duration-700 ease-out opacity-100 translate-y-0">
+<div class="relative rounded-3xl overflow-hidden shadow-2xl border border-white/40">
+<img alt="Dashboard Preview" class="w-full h-auto" decoding="async" src="assets/dashboard-preview-final.png">
+<div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none"></div>
+</div>
+</div>
+</section>
+<!-- Performance Analytics Showcase -->
+<section class="py-20 relative overflow-hidden" id="performance-analytics">
+<div class="max-w-[1440px] mx-auto px-container-padding transition-all duration-700 ease-out opacity-100 translate-y-0">
+<div class="grid md:grid-cols-2 gap-stack-lg items-center">
+<div>
+<span class="font-label-md text-primary font-bold tracking-widest uppercase mb-2 block">Performance Insight</span>
+<h2 class="font-headline-lg text-on-surface mb-stack-md">Visualizing Your Growth</h2>
+<p class="font-body-lg text-on-surface-variant mb-8">Compare subject performance with precision. Our trend analytics help you see exactly where you're excelling and where you need a little more focus.</p>
+<div class="space-y-4">
+<div class="glass-card p-6 rounded-2xl flex items-center gap-6">
+<div class="bg-primary-container p-3 rounded-xl">
+<span class="material-symbols-outlined text-on-primary-container">trending_up</span>
+</div>
+<div>
+<h4 class="font-headline-md text-sm mb-1">Subject Comparison</h4>
+<p class="text-on-surface-variant text-sm">Real-time benchmarks against your personal goals.</p>
+</div>
+</div>
+<div class="glass-card p-6 rounded-2xl flex items-center gap-6">
+<div class="bg-secondary-container p-3 rounded-xl">
+<span class="material-symbols-outlined text-on-secondary-container">query_stats</span>
+</div>
+<div>
+<h4 class="font-headline-md text-sm mb-1">Forecasting Preview</h4>
+<p class="text-on-surface-variant text-sm">AI-driven grade predictions based on current trajectories.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative flex justify-center">
+<div class="w-full aspect-square max-w-md bg-surface-container rounded-full flex items-center justify-center relative">
+<div class="absolute inset-0 border-[20px] border-primary-fixed-dim rounded-full opacity-20 animate-pulse"></div>
+<div class="glass-card p-8 rounded-3xl w-4/5 text-center shadow-xl">
+<div class="relative inline-flex items-center justify-center mb-4">
+    <svg class="w-32 h-32">
+        <circle class="text-primary-fixed-dim/20" stroke-width="8" stroke="currentColor" fill="transparent" r="58" cx="64" cy="64"></circle>
+        <circle class="text-primary" stroke-width="8" stroke-dasharray="364.4" stroke-dashoffset="47.4" stroke-linecap="round" stroke="currentColor" fill="transparent" r="58" cx="64" cy="64"></circle>
+    </svg>
+    <span class="absolute text-3xl font-bold font-display-lg text-on-surface">8.7</span>
+</div>
+<p class="font-label-md text-on-surface-variant mt-2 uppercase tracking-widest">Cumulative GPA</p>
+<div class="mt-6 h-24 flex items-end justify-center gap-2">
+<div class="w-4 bg-primary rounded-t-lg h-[60%]"></div>
+<div class="w-4 bg-primary/60 rounded-t-lg h-[80%]"></div>
+<div class="w-4 bg-primary rounded-t-lg h-[50%]"></div>
+<div class="w-4 bg-secondary-container rounded-t-lg h-[90%]"></div>
+<div class="w-4 bg-primary rounded-t-lg h-[70%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Study Planner Showcase -->
+<section class="py-20 bg-surface-container-low/30" id="study-planner">
+<div class="max-w-[1440px] mx-auto px-container-padding transition-all duration-700 ease-out opacity-100 translate-y-0">
+<div class="flex flex-col md:flex-row-reverse gap-stack-lg items-center">
+<div class="md:w-1/2">
+<span class="font-label-md text-primary font-bold tracking-widest uppercase mb-2 block">Productivity Engine</span>
+<h2 class="font-headline-lg text-on-surface mb-stack-md">Master Your Schedule</h2>
+<p class="font-body-lg text-on-surface-variant mb-8">Our intelligent planner doesn't just list tasks—it optimizes your time. Use the built-in focus timer to maximize deep study sessions.</p>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-bright border border-outline-variant/30 p-6 rounded-2xl">
+<span class="material-symbols-outlined text-primary mb-2">timer</span>
+<h4 class="font-label-md font-bold mb-1">Focus Timer</h4>
+<p class="text-xs text-on-surface-variant">Stay in the flow state.</p>
+</div>
+<div class="bg-surface-bright border border-outline-variant/30 p-6 rounded-2xl">
+<span class="material-symbols-outlined text-primary mb-2">check_circle</span>
+<h4 class="font-label-md font-bold mb-1">Priority View</h4>
+<p class="text-xs text-on-surface-variant">What's due next?</p>
+</div>
+</div>
+</div>
+<div class="md:w-1/2">
+<div class="glass-card rounded-3xl p-8 border border-primary/10">
+<div class="flex justify-between items-center mb-6">
+<h3 class="font-headline-md text-lg">Weekly Focus</h3>
+<button class="text-primary text-sm font-bold">Manage Tasks</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-4 bg-surface p-4 rounded-xl border-l-4 border-primary">
+<span class="material-symbols-outlined text-primary">book</span>
+<div class="flex-1">
+<p class="font-label-md">Organic Chemistry Prep</p>
+<p class="text-[10px] text-on-surface-variant">2 Hours Session • Today</p>
+</div>
+<div class="bg-primary/10 text-primary px-2 py-1 rounded text-[10px] font-bold">ACTIVE</div>
+</div>
+<div class="flex items-center gap-4 bg-surface p-4 rounded-xl opacity-60">
+<span class="material-symbols-outlined text-on-surface-variant">edit</span>
+<div class="flex-1">
+<p class="font-label-md">History Essay Draft</p>
+<p class="text-[10px] text-on-surface-variant">Due Tomorrow</p>
+</div>
+</div>
+<div class="flex items-center gap-4 bg-surface p-4 rounded-xl opacity-60">
+<span class="material-symbols-outlined text-on-surface-variant">calculate</span>
+<div class="flex-1">
+<p class="font-label-md">Calculus Problem Set</p>
+<p class="text-[10px] text-on-surface-variant">4 Days Left</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Insights Showcase -->
+<section class="py-20 relative overflow-hidden" id="ai-insights">
+<!-- Glow accents -->
+<div class="absolute -top-40 -left-40 w-96 h-96 bg-primary/20 rounded-full blur-[120px] transition-all duration-700 ease-out opacity-100 translate-y-0"></div>
+<div class="absolute -bottom-40 -right-40 w-96 h-96 bg-tertiary-container/20 rounded-full blur-[120px] transition-all duration-700 ease-out opacity-100 translate-y-0"></div>
+<div class="max-w-[1440px] mx-auto px-container-padding text-center transition-all duration-700 ease-out opacity-100 translate-y-0">
+<span class="font-label-md text-primary font-bold tracking-widest uppercase mb-2 block">Powered by Intelligence</span>
+<h2 class="font-headline-lg text-on-surface mb-stack-md">AI Smart Suggestions</h2>
+<p class="font-body-lg text-on-surface-variant max-w-2xl mx-auto mb-12">SAPAS AI analyzes your study patterns and results to provide tailored recommendations that actually move the needle on your grades.</p>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10">
+<div class="bg-white/50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 border border-white/60">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+</div>
+<h4 class="font-headline-md text-base mb-2">Subject Optimization</h4>
+<p class="text-sm text-on-surface-variant">"Focus 20% more on Physics this week to hit your goal GPA."</p>
+</div>
+</div>
+<div class="glass-card p-8 rounded-3xl relative overflow-hidden group ring-2 ring-primary/20">
+<div class="absolute inset-0 bg-primary/10"></div>
+<div class="relative z-10">
+<div class="bg-primary/20 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 border border-primary/40">
+<span class="material-symbols-outlined text-primary">psychology</span>
+</div>
+<h4 class="font-headline-md text-base mb-2">Study Style Analysis</h4>
+<p class="text-sm text-on-surface-variant font-medium">"Your retention is 30% higher during morning focus blocks."</p>
+</div>
+</div>
+<div class="glass-card p-8 rounded-3xl relative overflow-hidden group">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="relative z-10">
+<div class="bg-white/50 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4 border border-white/60">
+<span class="material-symbols-outlined text-primary">tips_and_updates</span>
+</div>
+<h4 class="font-headline-md text-base mb-2">Content Prediction</h4>
+<p class="text-sm text-on-surface-variant">"Predicted exam topics based on your syllabus trend analysis."</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About SAPAS -->
+<section class="py-24 bg-surface-dim/40" id="about-sapas">
+<div class="max-w-[1440px] mx-auto px-container-padding transition-all duration-700 ease-out opacity-100 translate-y-0">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="font-headline-lg text-on-surface mb-8">Our Mission</h2>
+<div class="space-y-6 text-left">
+<div class="flex gap-6">
+<div class="shrink-0 w-12 h-12 bg-primary rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white">school</span>
+</div>
+<div>
+<h3 class="font-headline-md text-lg mb-2">Democratizing Academic Success</h3>
+<p class="font-body-md text-on-surface-variant">We believe every student deserves access to the same high-level analytics and planning tools used by professionals. SAPAS bridges the gap between effort and results.</p>
+</div>
+</div>
+<div class="flex gap-6">
+<div class="shrink-0 w-12 h-12 bg-secondary-container rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-on-secondary-container">science</span>
+</div>
+<div>
+<h3 class="font-headline-md text-lg mb-2">Pioneering Educational AI</h3>
+<p class="font-body-md text-on-surface-variant">By leveraging the latest in machine learning, we're building a future where your study tools understand your learning style as well as you do.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA Section -->
+<section class="py-32 relative overflow-hidden bg-primary text-on-primary text-center">
+<div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 transition-all duration-700 ease-out opacity-100 translate-y-0"></div>
+<div class="relative z-10 px-container-padding max-w-4xl mx-auto transition-all duration-700 ease-out opacity-100 translate-y-0">
+<h2 class="font-display-lg text-display-lg mb-8">Ready to start your journey?</h2>
+<p class="font-body-lg mb-12 opacity-90 max-w-2xl mx-auto">Join thousands of students who are already using AI to transform their academic performance and reclaim their time.</p>
+<div class="flex justify-center gap-6 flex-wrap">
+<button class="bg-white text-primary px-10 py-5 rounded-full font-headline-md hover:scale-105 transition-transform shadow-xl">Get Started Free</button>
+
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg mt-stack-lg bg-surface-container-low dark:bg-surface-dim border-t border-outline-variant/10">
+<div class="flex flex-col md:flex-row justify-between items-center px-container-padding max-w-[1440px] mx-auto">
+<div class="mb-8 md:mb-0">
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-headline-sm font-bold text-on-background">SAPAS</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-2">Empowering student success with AI.</p>
+</div>
+<div class="flex flex-wrap justify-center gap-x-12 gap-y-4">
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Privacy Policy</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Terms of Service</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Contact Us</a>
+<a class="font-label-sm text-on-surface-variant hover:text-primary transition-colors hover:underline" href="#">Help Center</a>
+</div>
+<div class="mt-8 md:mt-0 text-on-surface-variant text-sm font-label-sm">
+            © 2026<span style="font-size: 0.875rem;" class="">&nbsp;SAPAS Student Analytics. All rights reserved.</span></div>
+</div>
+</footer>
+<script>
+    // Framer Motion reveal logic could be added here if using a script integration, 
+    // but for simple fade-up we can use basic Intersection Observer or standard CSS animations.
+    const observerOptions = {
+        threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('opacity-100', 'translate-y-0');
+                entry.target.classList.remove('opacity-0', 'translate-y-10');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section > div').forEach(el => {
+        el.classList.add('transition-all', 'duration-700', 'ease-out', 'opacity-0', 'translate-y-10');
+        observer.observe(el);
+    });
+
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navSections = [...navLinks]
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+    function setActiveNav(sectionId) {
+        navLinks.forEach(link => {
+            const active = link.getAttribute('href') === `#${sectionId}`;
+            link.classList.toggle('is-active', active);
+            link.classList.toggle('text-primary', active);
+            link.classList.toggle('text-on-surface-variant', !active);
+        });
+    }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            setActiveNav(link.getAttribute('href').slice(1));
+        });
+    });
+
+    const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                setActiveNav(entry.target.id);
+            }
+        });
+    }, {
+        rootMargin: '-35% 0px -50% 0px',
+        threshold: 0
+    });
+
+    navSections.forEach(section => navObserver.observe(section));
+</script>
+
+
+</body></html>

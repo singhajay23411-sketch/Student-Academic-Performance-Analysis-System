@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Progress Tracking | SAPAS</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Google Fonts: Plus Jakarta Sans & Hanken Grotesk -->
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&amp;family=Hanken+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#765c00",
+                        "tertiary-container": "#f4b419",
+                        "outline-variant": "#d4c4ac",
+                        "surface-variant": "#ede1d1",
+                        "surface-container-highest": "#ede1d1",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#e9c258",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#febb14",
+                        "surface": "#fff8f3",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#f5b300",
+                        "on-primary-fixed-variant": "#5d4200",
+                        "inverse-primary": "#febb14",
+                        "background": "#fff8f3",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#7b5800",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#362f25",
+                        "on-tertiary-fixed": "#261900",
+                        "on-surface-variant": "#504533",
+                        "on-background": "#201b11",
+                        "on-surface": "#201b11",
+                        "tertiary-fixed": "#ffdea5",
+                        "secondary-container": "#fed669",
+                        "surface-container-high": "#f3e6d6",
+                        "surface-container": "#f9ecdc",
+                        "surface-bright": "#fff8f3",
+                        "tertiary-fixed-dim": "#fcbc24",
+                        "on-primary-container": "#654800",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#ffdf90",
+                        "primary-fixed": "#ffdea5",
+                        "inverse-on-surface": "#fcefde",
+                        "surface-dim": "#e4d8c8",
+                        "on-tertiary-fixed-variant": "#5d4200",
+                        "surface-tint": "#7b5800",
+                        "surface-container-low": "#fef2e1",
+                        "on-tertiary-container": "#654800",
+                        "on-error-container": "#93000a",
+                        "secondary": "#755b00",
+                        "on-secondary-fixed": "#241a00",
+                        "outline": "#827560",
+                        "primary": "#7b5800",
+                        "on-primary-fixed": "#271900",
+                        "on-secondary-fixed-variant": "#584400"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "gutter": "24px",
+                        "stack-sm": "12px",
+                        "unit": "8px",
+                        "container-padding": "40px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 196, 172, 0.3);
+            box-shadow: 0px 4px 20px rgba(123, 88, 0, 0.05);
+        }
+        .ai-insight-card {
+            background: rgba(254, 242, 225, 0.8);
+            backdrop-filter: blur(30px);
+            border: 1px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+        .ai-insight-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 12px;
+            padding: 1px;
+            background: linear-gradient(to right, #7b5800, #f4b419);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+        .gradient-text {
+            background: linear-gradient(to right, #7b5800, #f4b419);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #d4c4ac;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background font-body-md text-on-surface overflow-x-hidden">
+<!-- Side Navigation Bar -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface dark:bg-on-background border-r border-outline-variant shadow-sm flex flex-col py-stack-lg px-unit z-50">
+<div class="mb-stack-lg px-stack-sm">
+<h1 class="font-display-lg text-headline-md font-extrabold text-primary">SAPAS</h1>
+<p class="text-label-sm text-on-surface-variant tracking-wider uppercase">Student Analytics</p>
+</div>
+<nav class="flex-1 space-y-unit overflow-y-auto custom-scrollbar">
+<a class="flex items-center gap-stack-sm px-stack-sm py-unit text-on-surface-variant hover:text-primary transition-all hover:bg-surface-container-high rounded-xl scale-95 active:scale-100 font-label-md" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-stack-sm px-stack-sm py-unit text-on-surface-variant hover:text-primary transition-all hover:bg-surface-container-high rounded-xl scale-95 active:scale-100 font-label-md" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                Performance Analysis
+            </a>
+<a class="flex items-center gap-stack-sm px-stack-sm py-unit text-on-surface-variant hover:text-primary transition-all hover:bg-surface-container-high rounded-xl scale-95 active:scale-100 font-label-md" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+                Study Planner
+            </a>
+<a class="flex items-center gap-stack-sm px-stack-sm py-unit bg-primary-container text-on-primary-container rounded-xl font-semibold scale-95 active:scale-100 font-label-md" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+                Progress Tracking
+            </a>
+<a class="flex items-center gap-stack-sm px-stack-sm py-unit text-on-surface-variant hover:text-primary transition-all hover:bg-surface-container-high rounded-xl scale-95 active:scale-100 font-label-md" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-stack-md">
+<a class="flex items-center gap-stack-sm px-stack-sm py-unit text-on-surface-variant hover:text-error transition-all scale-95 active:scale-100 font-label-md" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Log Out
+            </a>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-256px)] z-40 bg-background/80 backdrop-blur-md">
+<div class="flex justify-between items-center px-container-padding py-stack-md">
+<div class="flex items-center gap-stack-md flex-1 max-w-xl">
+<h2 class="font-headline-md text-headline-md text-primary">Progress Tracking</h2>
+<div class="relative flex-1 group">
+<span class="material-symbols-outlined absolute left-stack-sm top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors">search</span>
+<input class="w-full bg-surface-container-low border-none rounded-full py-unit pl-stack-lg pr-stack-sm text-label-md focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="Search milestones..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-unit rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-unit rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="h-8 w-[1px] bg-outline-variant"></div>
+<div class="flex items-center gap-stack-sm cursor-pointer group">
+<img alt="Ralph Edwards" class="h-10 w-10 rounded-full border-2 border-primary object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDodwVK62LDFccDZYvME1h1sbu50mAkZOcQ5zr4FtSYFu475sXa-bIi4mi4Gay6ybctib-qAV6bXgRGB3nI4quwX0EIvq6lbhjdI3YCA_RZ9AlVnW_mLo6Nx67jnoeLzXzgEh82nEue9lDlrRgmRt_L5LO6qV0_pF7tj0hQ9111payCNtAz2ft8bXhZ3bZl_ORTcj7NzQUUh46jdfH2BY01XG1B3hQWonxVsSQn8NwaqpEOt18COfQMHyLF8gvkOlyQTzIoxK1WLg"/>
+<div class="hidden lg:block text-right">
+<p class="text-label-md font-bold text-on-surface group-hover:text-primary transition-colors">Ralph Edwards</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter">Computer Science Senior</p>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-32 pb-stack-lg px-container-padding">
+<div class="max-w-[1440px] mx-auto space-y-stack-md">
+<!-- Bento Grid Header: Goal Stats -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Learning Streak Widget -->
+<div class="col-span-12 md:col-span-4 glass-card rounded-xl p-stack-md flex flex-col justify-between overflow-hidden relative group">
+<div class="z-10">
+<span class="text-label-sm uppercase tracking-widest text-on-surface-variant font-bold">Current Momentum</span>
+<h3 class="text-display-lg font-display-lg mt-unit gradient-text">15 Days</h3>
+<p class="text-body-md text-on-surface-variant mt-unit">You're in the top 5% of active students this week. Keep the fire burning!</p>
+</div>
+<div class="mt-stack-md flex gap-unit items-end">
+<div class="w-full h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full transition-all duration-700 w-3/4"></div>
+</div>
+</div>
+<span class="material-symbols-outlined absolute -bottom-4 -right-4 text-[120px] opacity-5 group-hover:opacity-10 transition-opacity rotate-12 text-primary" style="font-variation-settings: 'FILL' 1;">local_fire_department</span>
+</div>
+<!-- Weekly Growth Bar Chart -->
+<div class="col-span-12 md:col-span-8 glass-card rounded-xl p-stack-md">
+<div class="flex justify-between items-start mb-stack-md">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">Weekly Study Growth</h3>
+<p class="text-body-md text-on-surface-variant">Hours spent focused vs last week</p>
+</div>
+<div class="flex items-center gap-unit text-primary font-bold">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-md">+12.4%</span>
+</div>
+</div>
+<div class="flex items-end justify-between h-32 px-stack-md gap-unit">
+<div class="flex flex-col items-center gap-unit flex-1">
+<div class="w-full bg-surface-container-highest rounded-t-lg transition-all duration-500 hover:bg-secondary-container h-16"></div>
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Mon</span>
+</div>
+<div class="flex flex-col items-center gap-unit flex-1">
+<div class="w-full bg-surface-container-highest rounded-t-lg transition-all duration-500 hover:bg-secondary-container h-24"></div>
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Tue</span>
+</div>
+<div class="flex flex-col items-center gap-unit flex-1">
+<div class="w-full bg-primary rounded-t-lg transition-all duration-500 h-32"></div>
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Wed</span>
+</div>
+<div class="flex flex-col items-center gap-unit flex-1">
+<div class="w-full bg-surface-container-highest rounded-t-lg transition-all duration-500 hover:bg-secondary-container h-20"></div>
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Thu</span>
+</div>
+<div class="flex flex-col items-center gap-unit flex-1">
+<div class="w-full bg-surface-container-highest rounded-t-lg transition-all duration-500 hover:bg-secondary-container h-28"></div>
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Fri</span>
+</div>
+<div class="flex flex-col items-center gap-unit flex-1">
+<div class="w-full bg-surface-container-highest rounded-t-lg transition-all duration-500 hover:bg-secondary-container h-12"></div>
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Sat</span>
+</div>
+<div class="flex flex-col items-center gap-unit flex-1">
+<div class="w-full bg-surface-container-highest rounded-t-lg transition-all duration-500 hover:bg-secondary-container h-8"></div>
+<span class="text-[10px] text-on-surface-variant uppercase font-bold">Sun</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Semester Milestones & Progress -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Goal Completion Timeline -->
+<div class="col-span-12 md:col-span-7 glass-card rounded-xl p-stack-md">
+<h3 class="font-headline-md text-headline-md mb-stack-md">Semester Milestones</h3>
+<div class="space-y-stack-md relative before:absolute before:left-4 before:top-2 before:bottom-2 before:w-[1px] before:bg-outline-variant">
+<!-- Milestone 1 -->
+<div class="relative pl-12">
+<div class="absolute left-3 top-2 w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-primary-container"></div>
+<div class="flex justify-between items-center mb-unit">
+<h4 class="font-bold text-on-surface">Midterm Examination Phase</h4>
+<span class="text-label-sm text-on-primary-container bg-primary-container px-stack-sm py-unit rounded-lg">Completed</span>
+</div>
+<p class="text-body-md text-on-surface-variant">Achieved 3.85 GPA across all core technical subjects.</p>
+</div>
+<!-- Milestone 2 -->
+<div class="relative pl-12">
+<div class="absolute left-3 top-2 w-2.5 h-2.5 rounded-full bg-primary ring-4 ring-primary-container"></div>
+<div class="flex justify-between items-center mb-unit">
+<h4 class="font-bold text-on-surface">Data Structures Project Submission</h4>
+<span class="text-label-sm text-primary-container border border-primary-container px-stack-sm py-unit rounded-lg">95% Score</span>
+</div>
+<p class="text-body-md text-on-surface-variant">Your implementation of AVL trees was highlighted by Prof. Miller.</p>
+</div>
+<!-- Milestone 3 -->
+<div class="relative pl-12">
+<div class="absolute left-3 top-2 w-2.5 h-2.5 rounded-full bg-outline-variant"></div>
+<div class="flex justify-between items-center mb-unit">
+<h4 class="font-bold text-on-surface opacity-60">Final Thesis Draft</h4>
+<span class="text-label-sm text-on-surface-variant bg-surface-container-highest px-stack-sm py-unit rounded-lg">Upcoming (Nov 15)</span>
+</div>
+<p class="text-body-md text-on-surface-variant opacity-60">Prepare the methodology section for review by early next week.</p>
+</div>
+</div>
+</div>
+<!-- Achievement Badges -->
+<div class="col-span-12 md:col-span-5 flex flex-col gap-gutter">
+<div class="glass-card rounded-xl p-stack-md flex-1">
+<div class="flex justify-between items-center mb-stack-sm">
+<h3 class="font-bold text-on-surface">Unlocked Badges</h3>
+<button class="text-primary text-label-md font-bold hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-2 gap-stack-sm">
+<div class="bg-surface-container-low rounded-xl p-stack-sm flex flex-col items-center text-center transition-transform hover:-translate-y-1">
+<div class="w-12 h-12 bg-secondary-container rounded-full flex items-center justify-center mb-unit text-on-secondary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">biotech</span>
+</div>
+<p class="font-bold text-body-md">Top Researcher</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter font-medium">Academic Excellence</p>
+</div>
+<div class="bg-surface-container-low rounded-xl p-stack-sm flex flex-col items-center text-center transition-transform hover:-translate-y-1">
+<div class="w-12 h-12 bg-tertiary-container rounded-full flex items-center justify-center mb-unit text-on-tertiary-container">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</div>
+<p class="font-bold text-body-md">Fast Learner</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-tighter font-medium">Quick Completion</p>
+</div>
+</div>
+</div>
+<!-- AI Insight Card -->
+<div class="ai-insight-card rounded-xl p-stack-md">
+<div class="flex items-center gap-stack-sm mb-unit">
+<div class="p-unit bg-secondary-container/20 rounded-lg">
+<span class="material-symbols-outlined text-secondary text-md">smart_toy</span>
+</div>
+<h3 class="font-bold text-secondary">AI Progress Insight</h3>
+</div>
+<p class="text-body-md text-on-surface italic">"Ralph, your performance in <strong>Algorithm Lab</strong> suggests you're ready for advanced complexity. Try the optional 'Dynamic Programming' modules to boost your projected final grade to an A+."</p>
+</div>
+</div>
+</div>
+<!-- Detailed Progress Table -->
+<div class="glass-card rounded-xl overflow-hidden border border-outline-variant">
+<div class="p-stack-md border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md">Course Progress Details</h3>
+<div class="flex gap-stack-sm">
+<button class="px-stack-md py-unit border border-outline-variant rounded-lg text-label-md font-bold hover:bg-surface-container-low transition-colors">Export Report</button>
+<select class="px-stack-md py-unit border border-outline-variant rounded-lg text-label-md font-bold bg-white focus:ring-primary">
+<option>Fall Semester 2023</option>
+<option>Spring Semester 2023</option>
+</select>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low">
+<th class="px-stack-md py-stack-sm text-label-sm font-bold uppercase tracking-wider text-on-surface-variant">Course Name</th>
+<th class="px-stack-md py-stack-sm text-label-sm font-bold uppercase tracking-wider text-on-surface-variant">Attendance</th>
+<th class="px-stack-md py-stack-sm text-label-sm font-bold uppercase tracking-wider text-on-surface-variant">Assignments</th>
+<th class="px-stack-md py-stack-sm text-label-sm font-bold uppercase tracking-wider text-on-surface-variant">Current Grade</th>
+<th class="px-stack-md py-stack-sm text-label-sm font-bold uppercase tracking-wider text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-stack-md py-stack-sm font-bold text-on-surface">Algorithm Analysis</td>
+<td class="px-stack-md py-stack-sm">
+<div class="flex items-center gap-stack-sm">
+<div class="w-24 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[95%]"></div>
+</div>
+<span class="text-body-md">95%</span>
+</div>
+</td>
+<td class="px-stack-md py-stack-sm text-body-md font-semibold">12 / 12</td>
+<td class="px-stack-md py-stack-sm">
+<span class="px-stack-sm py-unit bg-tertiary-container/20 text-tertiary rounded-full font-bold text-label-sm">A (4.0)</span>
+</td>
+<td class="px-stack-md py-stack-sm">
+<span class="flex items-center gap-unit text-primary font-bold text-label-sm">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+                                        On Track
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-stack-md py-stack-sm font-bold text-on-surface">Data Structures</td>
+<td class="px-stack-md py-stack-sm">
+<div class="flex items-center gap-stack-sm">
+<div class="w-24 h-2 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[88%]"></div>
+</div>
+<span class="text-body-md">88%</span>
+</div>
+</td>
+<td class="px-stack-md py-stack-sm text-body-md font-semibold">10 / 12</td>
+<td class="px-stack-md py-stack-sm">
+<span class="px-stack-sm py-unit bg-secondary-container/20 text-secondary rounded-full font-bold text-label-sm">A- (3.7)</span>
+</td>
+<td class="px-stack-md py-stack-sm">
+<span class="flex items-center gap-unit text-primary font-bold text-label-sm">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+                                        Improving
+                                    </span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-stack-md py-stack-sm font-bold text-on-surface">Numerical Methods</td>
+<td class="px-stack-md py-stack-sm">
+<div class="flex items-center gap-stack-sm">
+<div class="w-24 h-2 bg-error-container/40 rounded-full overflow-hidden">
+<div class="bg-error h-full w-[65%]"></div>
+</div>
+<span class="text-body-md">65%</span>
+</div>
+</td>
+<td class="px-stack-md py-stack-sm text-body-md font-semibold">8 / 12</td>
+<td class="px-stack-md py-stack-sm">
+<span class="px-stack-sm py-unit bg-on-surface-variant/10 text-on-surface-variant rounded-full font-bold text-label-sm">B (3.0)</span>
+</td>
+<td class="px-stack-md py-stack-sm">
+<span class="flex items-center gap-unit text-error font-bold text-label-sm">
+<span class="material-symbols-outlined text-[18px]">warning</span>
+                                        Attention
+                                    </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Motivational Banner -->
+<div class="relative w-full rounded-xl overflow-hidden p-container-padding flex items-center bg-gradient-to-r from-primary to-tertiary text-white shadow-xl">
+<img alt="Success Motivation" class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-overlay" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9vLqDS85FxVTaP37AALBnPG8fn4-YLY757hbLSLKCdDXm9y0ESYAK7u-kWi085mfmI1RBcfJZO1QsKELvAAepsgVOJAQPWSZNBB-XEvTsuOlSpT7L5LkKng9fjNjjX9N4nclWbz0EX8Spu5i1mZtceBTtIncLQ_VIVAp73f7VQ7SafoZck465Pn0dFX27lzt99YPjBJmNO4LQaKaraqZ5eH-HFafKy8wGKdprmTR96P0JNtGkz2o60CU9l8jfybwPFTbSRTB67A"/>
+<div class="relative z-10 max-w-2xl">
+<h2 class="text-display-lg font-display-lg mb-unit">You're 75% through the semester!</h2>
+<p class="text-body-lg mb-stack-md opacity-90 leading-relaxed">Based on your current trajectory, you are on track to exceed your target CGPA of 3.80. Focus on your Numerical Methods assignments to secure your position.</p>
+<button class="bg-white text-primary px-stack-lg py-stack-sm rounded-full font-bold hover:bg-surface-bright transition-all shadow-lg active:scale-95">Set Next Goal</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Contextual FAB -->
+<button class="fixed bottom-stack-md right-stack-md h-16 w-16 bg-primary-container text-on-primary-container rounded-full shadow-2xl flex items-center justify-center hover:scale-110 active:scale-95 transition-transform group z-50">
+<span class="material-symbols-outlined text-headline-md group-hover:rotate-90 transition-transform">add</span>
+</button>
+</body></html>

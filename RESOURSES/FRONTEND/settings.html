@@ -1,0 +1,333 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Settings - SAPAS Student Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-container": "#765c00",
+                        "tertiary-container": "#f4b419",
+                        "outline-variant": "#d4c4ac",
+                        "surface-variant": "#ede1d1",
+                        "surface-container-highest": "#ede1d1",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#e9c258",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#febb14",
+                        "surface": "#fff8f3",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#f5b300",
+                        "on-primary-fixed-variant": "#5d4200",
+                        "inverse-primary": "#febb14",
+                        "background": "#fff8f3",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#7b5800",
+                        "error": "#ba1a1a",
+                        "inverse-surface": "#362f25",
+                        "on-tertiary-fixed": "#261900",
+                        "on-surface-variant": "#504533",
+                        "on-background": "#201b11",
+                        "on-surface": "#201b11",
+                        "tertiary-fixed": "#ffdea5",
+                        "secondary-container": "#fed669",
+                        "surface-container-high": "#f3e6d6",
+                        "surface-container": "#f9ecdc",
+                        "surface-bright": "#fff8f3",
+                        "tertiary-fixed-dim": "#fcbc24",
+                        "on-primary-container": "#654800",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#ffdf90",
+                        "primary-fixed": "#ffdea5",
+                        "inverse-on-surface": "#fcefde",
+                        "surface-dim": "#e4d8c8",
+                        "on-tertiary-fixed-variant": "#5d4200",
+                        "surface-tint": "#7b5800",
+                        "surface-container-low": "#fef2e1",
+                        "on-tertiary-container": "#654800",
+                        "on-error-container": "#93000a",
+                        "secondary": "#755b00",
+                        "on-secondary-fixed": "#241a00",
+                        "outline": "#827560",
+                        "primary": "#7b5800",
+                        "on-primary-fixed": "#271900",
+                        "on-secondary-fixed-variant": "#584400"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-md": "24px",
+                        "stack-lg": "48px",
+                        "gutter": "24px",
+                        "stack-sm": "12px",
+                        "unit": "8px",
+                        "container-padding": "40px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Hanken Grotesk"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(254, 242, 225, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(130, 117, 96, 0.15);
+            box-shadow: 0px 4px 20px rgba(123, 88, 0, 0.05);
+        }
+        .ai-glow {
+            border: 1px solid transparent;
+            background-image: linear-gradient(#fef2e1, #fef2e1), linear-gradient(to right, #7b5800, #f4b419);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style data-stitch-cursor="">*{cursor:crosshair!important}[contenteditable="true"]:focus,.cursor-text:focus{cursor:text!important}</style><style data-stitch-scroll-lock="">html,body{overflow:hidden!important}</style></head>
+<body class="bg-background font-body-md text-on-surface antialiased">
+<!-- SideNavBar Shell -->
+<aside class="h-screen w-64 fixed left-0 top-0 bg-surface border-r border-outline-variant flex flex-col py-stack-lg px-stack-sm shadow-sm z-50">
+<div class="mb-stack-lg px-stack-md">
+<h1 class="font-display-lg text-headline-md font-bold text-primary">SAPAS</h1>
+<p class="text-on-surface-variant font-label-md">Student Analytics</p>
+</div>
+<nav class="flex-grow space-y-unit">
+<a class="flex items-center gap-stack-sm px-stack-md py-stack-sm text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-stack-sm px-stack-md py-stack-sm text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-md">Performance Analysis</span>
+</a>
+<a class="flex items-center gap-stack-sm px-stack-md py-stack-sm text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-body-md">Study Planner</span>
+</a>
+<a class="flex items-center gap-stack-sm px-stack-md py-stack-sm text-on-surface-variant hover:text-primary transition-colors hover:bg-surface-container rounded-xl" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-body-md">Progress Tracking</span>
+</a>
+<a class="flex items-center gap-stack-sm px-stack-md py-stack-sm bg-primary-container text-on-primary-container rounded-xl font-semibold" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-stack-md">
+<button class="w-full flex items-center gap-stack-sm px-stack-md py-stack-sm text-on-surface-variant hover:text-error transition-colors rounded-xl hover:bg-error-container/20">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-md">Log Out</span>
+</button>
+</div>
+</aside>
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 right-0 w-[calc(100%-256px)] bg-surface/70 backdrop-blur-md z-40 flex justify-between items-center px-container-padding py-stack-md">
+<div class="flex items-center gap-stack-md">
+<h2 class="font-headline-md text-headline-md text-primary">Settings</h2>
+</div>
+<div class="flex items-center gap-stack-md">
+<div class="relative group">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer group-hover:text-primary" data-icon="notifications">notifications</span>
+<span class="absolute top-0 right-0 w-2 h-2 bg-error rounded-full"></span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:text-primary" data-icon="help">help</span>
+<div class="flex items-center gap-unit ml-stack-sm border-l border-outline-variant pl-stack-md">
+<img alt="Ralph Edwards" class="w-8 h-8 rounded-full border border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcrE9SH0nittiyaoOQFz36tEYRGh6n09yxaThLGLXq9VY_N1ZEIOZb1PubRIf-TrDOn96m36GU6csDMmfKfMHWXW99FC0Sz8H8Gm2xvvd8A9PRebT33zUyTgjmqBm9nciphrX7rjuIxjv-_uyakty3byxcihGprGkNQ3Detz21XEEIEUfIPji_Isoob_PIIhRb6P8o4nidftlRc3iJd2F_1vkAy_gU3mFAezz7-n6TtRJ5OglMngPec_ZJUx6cBWJ93g0xx1nmAQ">
+<span class="font-body-sm font-semibold text-on-surface">Ajay Raj<br></span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 mt-[80px] p-container-padding bg-background min-h-screen">
+<div class="max-w-5xl mx-auto space-y-stack-lg">
+<!-- Bento Grid Layout for Settings Sections -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Profile Section -->
+<section class="col-span-12 lg:col-span-8 glass-card p-stack-md rounded-xl">
+<div class="flex items-center justify-between mb-stack-md">
+<h3 class="font-headline-md text-on-surface">Public Profile</h3>
+<button class="px-stack-md py-unit bg-primary-container text-on-primary-container rounded-lg font-semibold text-label-md transition-transform active:scale-95 shadow-sm hover:shadow-md">Save Changes</button>
+</div>
+<div class="flex flex-col md:flex-row gap-stack-md">
+<div class="flex-shrink-0 flex flex-col items-center gap-unit">
+<div class="relative group">
+<img alt="Profile Large" class="w-32 h-32 rounded-xl object-cover border-2 border-primary/10 shadow-lg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvkg44_sgiuCU6LCFGr2r4ZDEd6jsuNqWDa4CYF4HevNk4s7s3cCC387tFxQyx5upRG07NtQOVB4JyKx1_gzTbc-utgDzIdIP3GwmARlez6a_GJzd-fXX4oiZCZNY8WDA1yAFcnFbrj5qfP2MazS1Of0qOu-l6VqBjcYtG7AraxXjhfaYjdwy0X6fIUPIwpcCkkerVfXRDZDCC6ZSsHoffI9sfA17qvdEuJ2UQBScnDUZXUsN65HzYM3lwbUpfcwpS1aMXMtEeKA">
+<button class="absolute -bottom-2 -right-2 bg-surface p-base rounded-full shadow-md border border-outline-variant hover:text-primary">
+<span class="material-symbols-outlined text-[18px]" data-icon="photo_camera">photo_camera</span>
+</button>
+</div>
+<span class="text-label-sm text-on-surface-variant">Update Avatar</span>
+</div>
+<div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-stack-sm">
+<div class="space-y-unit">
+<label class="text-label-md text-on-surface-variant">First Name</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-stack-md py-unit focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" type="text" value="Ajay">
+</div>
+<div class="space-y-unit">
+<label class="text-label-md text-on-surface-variant">Last Name</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-stack-md py-unit focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" type="text" value="Raj">
+</div>
+<div class="md:col-span-2 space-y-unit">
+<label class="text-label-md text-on-surface-variant">Email Address</label>
+<input class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-stack-md py-unit focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" type="email" value="ralph.edwards@university.edu">
+</div>
+<div class="md:col-span-2 space-y-unit">
+<label class="text-label-md text-on-surface-variant">Biography</label>
+<textarea class="w-full bg-surface-container-low border border-outline-variant rounded-lg px-stack-md py-unit focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none resize-none" rows="3">Senior Computer Science student focusing on Machine Learning and Data Analytics.</textarea>
+</div>
+</div>
+</div>
+</section>
+<!-- Preferences & Appearance -->
+<section class="col-span-12 lg:col-span-4 space-y-gutter">
+<div class="glass-card p-stack-md rounded-xl">
+<h3 class="font-headline-md text-on-surface mb-stack-sm">Appearance</h3>
+<div class="space-y-stack-sm">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-body-md font-semibold">Dark Mode</span>
+<span class="text-label-sm text-on-surface-variant">Switch to dark theme</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-body-md font-semibold">Compact View</span>
+<span class="text-label-sm text-on-surface-variant">High density dashboard</span>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+</div>
+<div class="ai-glow p-stack-md rounded-xl shadow-md">
+<div class="flex items-center gap-unit mb-unit">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-label-md font-bold text-primary uppercase tracking-wider">AI Insights Power</span>
+</div>
+<p class="text-body-md text-on-surface-variant leading-relaxed">Your account is currently using <strong>Adaptive Learning</strong> mode. AI will proactively suggest study schedules based on your performance trends.</p>
+<button class="mt-stack-sm text-primary font-semibold text-label-md flex items-center gap-unit hover:gap-stack-sm transition-all">
+                            Configure AI 
+                            <span class="material-symbols-outlined text-sm" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Security Management -->
+<section class="col-span-12 lg:col-span-7 glass-card p-stack-md rounded-xl">
+<h3 class="font-headline-md text-on-surface mb-stack-md">Security &amp; Privacy</h3>
+<div class="space-y-stack-md">
+<div class="flex items-start gap-stack-sm pb-stack-sm border-b border-outline-variant">
+<div class="bg-surface-container-low p-unit rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="lock_open">lock_open</span>
+</div>
+<div class="flex-grow">
+<p class="text-body-md font-semibold">Two-Factor Authentication</p>
+<p class="text-label-sm text-on-surface-variant">Add an extra layer of security to your academic data.</p>
+</div>
+<button class="px-stack-md py-unit border border-outline-variant rounded-lg text-label-md font-semibold hover:bg-surface-container-low transition-colors">Enable</button>
+</div>
+<div class="flex items-start gap-stack-sm pb-stack-sm border-b border-outline-variant">
+<div class="bg-surface-container-low p-unit rounded-lg">
+<span class="material-symbols-outlined text-primary" data-icon="devices">devices</span>
+</div>
+<div class="flex-grow">
+<p class="text-body-md font-semibold">Active Sessions</p>
+<p class="text-label-sm text-on-surface-variant">Currently logged in on 2 devices (MacBook Pro, iPhone 15).</p>
+</div>
+<button class="px-stack-md py-unit border border-outline-variant rounded-lg text-label-md font-semibold hover:bg-surface-container-low transition-colors">Manage</button>
+</div>
+<div class="pt-unit">
+<p class="text-body-md font-semibold mb-unit text-error">Danger Zone</p>
+<div class="flex flex-col md:flex-row gap-stack-sm items-center justify-between p-stack-sm bg-error-container/5 border border-error/20 rounded-xl">
+<p class="text-label-sm text-on-surface-variant">Once you delete your account, there is no going back. Please be certain.</p>
+<button class="px-stack-md py-unit bg-error text-on-error rounded-lg text-label-md font-semibold whitespace-nowrap shadow-sm hover:brightness-110 active:scale-95 transition-all">Delete Account</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Notification Preferences -->
+<section class="col-span-12 lg:col-span-5 glass-card p-stack-md rounded-xl">
+<h3 class="font-headline-md text-on-surface mb-stack-md">Notifications</h3>
+<div class="space-y-unit">
+<div class="flex items-center justify-between p-unit hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="mail">mail</span>
+<span class="text-body-md">Grade Updates</span>
+</div>
+<input checked="" class="w-5 h-5 text-primary rounded border-outline-variant focus:ring-primary/20 accent-primary" type="checkbox">
+</div>
+<div class="flex items-center justify-between p-unit hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="schedule">schedule</span>
+<span class="text-body-md">Deadlines Reminders</span>
+</div>
+<input checked="" class="w-5 h-5 text-primary rounded border-outline-variant focus:ring-primary/20 accent-primary" type="checkbox">
+</div>
+<div class="flex items-center justify-between p-unit hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="tips_and_updates">tips_and_updates</span>
+<span class="text-body-md">AI Productivity Tips</span>
+</div>
+<input class="w-5 h-5 text-primary rounded border-outline-variant focus:ring-primary/20 accent-primary" type="checkbox">
+</div>
+<div class="flex items-center justify-between p-unit hover:bg-surface-container-low rounded-lg transition-colors">
+<div class="flex items-center gap-unit">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="campaign">campaign</span>
+<span class="text-body-md">System Announcements</span>
+</div>
+<input checked="" class="w-5 h-5 text-primary rounded border-outline-variant focus:ring-primary/20 accent-primary" type="checkbox">
+</div>
+</div>
+<div class="mt-stack-md pt-stack-md border-t border-outline-variant">
+<h4 class="text-label-sm font-bold text-on-surface-variant uppercase mb-unit">Data Export</h4>
+<div class="flex items-center gap-unit p-unit border border-dashed border-outline-variant rounded-xl hover:bg-surface-container-low cursor-pointer transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="download">download</span>
+<div class="flex flex-col">
+<span class="text-label-md font-semibold">Download Academic History</span>
+<span class="text-[10px] text-on-surface-variant">CSV, PDF, or JSON format</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+</main>
+
+
+</body></html>

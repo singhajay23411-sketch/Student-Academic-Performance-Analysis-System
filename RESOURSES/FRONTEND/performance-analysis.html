@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SAPAS | Amber Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#765c00",
+                    "tertiary-container": "#f4b419",
+                    "outline-variant": "#d4c4ac",
+                    "surface-variant": "#ede1d1",
+                    "surface-container-highest": "#ede1d1",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed-dim": "#e9c258",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#febb14",
+                    "surface": "#fff8f3",
+                    "on-error": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "primary-container": "#f5b300",
+                    "on-primary-fixed-variant": "#5d4200",
+                    "inverse-primary": "#febb14",
+                    "background": "#fff8f3",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#7b5800",
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#362f25",
+                    "on-tertiary-fixed": "#261900",
+                    "on-surface-variant": "#504533",
+                    "on-background": "#201b11",
+                    "on-surface": "#201b11",
+                    "tertiary-fixed": "#ffdea5",
+                    "secondary-container": "#fed669",
+                    "surface-container-high": "#f3e6d6",
+                    "surface-container": "#f9ecdc",
+                    "surface-bright": "#fff8f3",
+                    "tertiary-fixed-dim": "#fcbc24",
+                    "on-primary-container": "#654800",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#ffdf90",
+                    "primary-fixed": "#ffdea5",
+                    "inverse-on-surface": "#fcefde",
+                    "surface-dim": "#e4d8c8",
+                    "on-tertiary-fixed-variant": "#5d4200",
+                    "surface-tint": "#7b5800",
+                    "surface-container-low": "#fef2e1",
+                    "on-tertiary-container": "#654800",
+                    "on-error-container": "#93000a",
+                    "secondary": "#755b00",
+                    "on-secondary-fixed": "#241a00",
+                    "outline": "#827560",
+                    "primary": "#7b5800",
+                    "on-primary-fixed": "#271900",
+                    "on-secondary-fixed-variant": "#584400"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "24px",
+                    "stack-lg": "48px",
+                    "gutter": "24px",
+                    "stack-sm": "12px",
+                    "unit": "8px",
+                    "container-padding": "40px"
+            },
+            "fontFamily": {
+                    "label-md": ["Hanken Grotesk"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.4", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Hanken Grotesk', sans-serif; background-color: #fff8f3; }
+        h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-card {
+            background: rgba(255, 252, 248, 0.6);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(123, 88, 0, 0.1);
+            box-shadow: 0 4px 20px -2px rgba(123, 88, 0, 0.08);
+        }
+        .golden-gradient-btn {
+            background: linear-gradient(135deg, #f5b300 0%, #7b5800 100%);
+            box-shadow: 0 4px 15px -3px rgba(245, 179, 0, 0.3);
+        }
+        .ai-gradient-border {
+            position: relative;
+            background: #fffdfa;
+            border-radius: 1rem;
+        }
+        .ai-gradient-border::before {
+            content: "";
+            position: absolute;
+            top: -1px; left: -1px; right: -1px; bottom: -1px;
+            background: linear-gradient(to right, #f5b300, #7b5800);
+            border-radius: 1rem;
+            z-index: -1;
+            opacity: 0.2;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Side Navigation Bar -->
+<aside class="h-screen w-64 fixed left-0 top-0 flex flex-col py-stack-md px-stack-sm bg-surface-container-low border-r border-outline-variant shadow-sm z-50">
+<div class="mb-stack-lg px-unit">
+<h1 class="font-display-lg text-headline-md font-bold text-primary">SAPAS</h1>
+<p class="text-label-sm text-on-surface-variant">Student Analytics</p>
+</div>
+<nav class="flex-1 space-y-unit">
+<a class="flex items-center gap-unit px-unit py-unit text-on-surface-variant hover:text-primary transition-all hover:bg-surface-container rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-unit px-unit py-unit bg-primary-container text-on-primary-container rounded-lg font-semibold shadow-sm" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-md">Performance Analysis</span>
+</a>
+<a class="flex items-center gap-unit px-unit py-unit text-on-surface-variant hover:text-primary transition-all hover:bg-surface-container rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="calendar_month">calendar_month</span>
+<span class="font-label-md">Study Planner</span>
+</a>
+<a class="flex items-center gap-unit px-unit py-unit text-on-surface-variant hover:text-primary transition-all hover:bg-surface-container rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="monitoring">monitoring</span>
+<span class="font-label-md">Progress Tracking</span>
+</a>
+<a class="flex items-center gap-unit px-unit py-unit text-on-surface-variant hover:text-primary transition-all hover:bg-surface-container rounded-lg" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md">Settings</span>
+</a>
+</nav>
+<div class="mt-auto">
+<a class="flex items-center gap-unit px-unit py-unit text-on-surface-variant hover:text-error transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-label-md">Log Out</span>
+</a>
+</div>
+</aside>
+<!-- Top App Bar -->
+<header class="fixed top-0 right-0 w-[calc(100%-256px)] z-40 flex justify-between items-center px-container-padding py-stack-sm bg-background/80 backdrop-blur-md ml-64 border-b border-outline-variant/30">
+<div class="flex items-center gap-stack-md">
+<h2 class="font-headline-md text-primary">Performance Analysis</h2>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-unit top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="pl-[40px] pr-stack-sm py-unit rounded-full border border-outline-variant bg-surface-container-lowest focus:ring-2 focus:ring-primary/20 focus:outline-none w-72 transition-all text-body-md" placeholder="Search analytics..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+</button>
+<div class="flex items-center gap-unit p-1 hover:bg-surface-container rounded-full transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container shadow-sm">
+<img alt="Ralph Edwards Profile Image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQlmnQIc4dgdJySWdzH3uZMAl5AhANiQWHGOKeAiu7tRX7y6YzkBVBtqCfrUD6AyQlYPQ72uqZmNOGQQQWUhevEk6yroUG3ew4LoEaUxhGzaRZVzGlC4K8vdNYBl-YaOZXTstyZ3cyvXt-DxdoqHzxJhlGpA9jP_veSvbf6OqeBeY3YfncpGbrgq2q_dKTKFVWsZjzCtVa9DhqufoNLjtUj50jzfebVw76baWUd6R8EhfJpTTXoRO_s7R8eZj8KNvtqbRmDE9X_g"/>
+</div>
+<span class="font-label-md text-on-surface hidden xl:block px-unit">Ralph Edwards</span>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 pt-[88px] p-container-padding min-h-screen">
+<!-- Dashboard Header / Grid Section -->
+<div class="grid grid-cols-12 gap-gutter">
+<!-- Target vs Previous GPA Comparison -->
+<div class="col-span-12 lg:col-span-8 grid grid-cols-2 gap-stack-md">
+<div class="glass-card p-stack-md rounded-xl flex flex-col justify-between">
+<div>
+<p class="text-label-sm text-on-surface-variant mb-unit">My Target GPA</p>
+<h3 class="text-display-lg text-primary">3.85</h3>
+</div>
+<div class="flex items-center gap-unit text-tertiary">
+<span class="material-symbols-outlined" data-icon="trending_up">trending_up</span>
+<span class="text-label-md">Fall 2023 Goal</span>
+</div>
+</div>
+<div class="glass-card p-stack-md rounded-xl flex flex-col justify-between">
+<div>
+<p class="text-label-sm text-on-surface-variant mb-unit">Previous SGPA</p>
+<h3 class="text-display-lg text-on-surface">3.55</h3>
+</div>
+<div class="flex items-center gap-unit text-on-surface-variant">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="text-label-md">Spring 2023 Results</span>
+</div>
+</div>
+</div>
+<!-- Priority List -->
+<div class="col-span-12 lg:col-span-4 row-span-2 glass-card p-stack-md rounded-xl">
+<div class="flex justify-between items-center mb-stack-md">
+<h4 class="font-headline-md text-on-surface">Priority List</h4>
+<span class="material-symbols-outlined text-primary cursor-pointer" data-icon="add_circle">add_circle</span>
+</div>
+<p class="text-body-md text-on-surface-variant mb-stack-md">Based on your current performance, focus on these:</p>
+<ul class="space-y-unit">
+<li class="flex items-center gap-unit p-stack-sm bg-surface-container rounded-lg border border-outline-variant/20 hover:border-primary/40 transition-all cursor-default">
+<span class="bg-primary/10 text-primary font-bold px-unit py-0.5 rounded text-xs">01</span>
+<span class="text-body-md font-semibold flex-1 text-on-surface">Algorithm Lab</span>
+<span class="material-symbols-outlined text-error text-sm" data-icon="priority_high" data-weight="fill" style="font-variation-settings: 'FILL' 1;">priority_high</span>
+</li>
+<li class="flex items-center gap-unit p-stack-sm bg-surface-container-lowest/50 rounded-lg border border-outline-variant/20">
+<span class="bg-surface-variant text-on-surface-variant font-bold px-unit py-0.5 rounded text-xs">02</span>
+<span class="text-body-md text-on-surface">Data Structure</span>
+</li>
+<li class="flex items-center gap-unit p-stack-sm bg-surface-container-lowest/50 rounded-lg border border-outline-variant/20">
+<span class="bg-surface-variant text-on-surface-variant font-bold px-unit py-0.5 rounded text-xs">03</span>
+<span class="text-body-md text-on-surface">Numerical Methods</span>
+</li>
+<li class="flex items-center gap-unit p-stack-sm bg-surface-container-lowest/50 rounded-lg border border-outline-variant/20">
+<span class="bg-surface-variant text-on-surface-variant font-bold px-unit py-0.5 rounded text-xs">04</span>
+<span class="text-body-md text-on-surface">Software Project I</span>
+</li>
+</ul>
+<div class="mt-stack-lg p-stack-sm ai-gradient-border border border-outline-variant/20">
+<div class="flex items-center gap-unit mb-unit text-tertiary">
+<span class="material-symbols-outlined text-md" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-label-sm font-bold uppercase tracking-wider">AI Insight</span>
+</div>
+<p class="text-body-md text-on-surface-variant leading-relaxed">
+    "Your performance in <span class="text-primary font-bold">Algorithms</span> is lagging behind your average. Dedicate 2 hours extra to lab practice this week."
+</p>
+</div>
+</div>
+<!-- Comparison Charts -->
+<div class="col-span-12 lg:col-span-8 glass-card p-stack-md rounded-xl overflow-hidden">
+<div class="flex justify-between items-center mb-stack-md">
+<div>
+<h4 class="font-headline-md text-on-surface">Performance Trend</h4>
+<p class="text-body-md text-on-surface-variant">Semester-wise progress and subject comparison</p>
+</div>
+<div class="flex gap-unit">
+<button class="px-stack-sm py-unit rounded-full border border-outline-variant text-label-md text-on-surface-variant hover:bg-surface-container transition-all">SGPA</button>
+<button class="px-stack-sm py-unit rounded-full golden-gradient-btn text-white text-label-md font-bold">Subject Grades</button>
+</div>
+</div>
+<div class="flex flex-col md:flex-row gap-gutter h-64">
+<!-- Placeholder for Radar Chart -->
+<div class="w-full md:w-1/2 flex items-center justify-center relative bg-surface-container-low/50 rounded-xl border border-dashed border-outline-variant/50">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-xl" data-alt="A sophisticated radar chart data visualization with amber and gold tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAS8-BxNaXQZunx6awafnOG5dWW2nK7YheD0VupLzH92BW3syDnZ9yojoNUnLg94AdrRsgvvfLphB5aQqSl-0nI9RPkxAVwpJEsOq_-XFeDo1Ipx5IztmVUJdaAbVV4Fcm6_qIustTpfRrMlvCMK5WxQ7dqke1GLIW9Qyngf60TwmM0VkQi-8LGHKpU3a7Fttj7CcJ_d1q2PLnBxjoFCFuyLzJlP99ZqV8KOgV2v9QJwYmEFokzaCUwBNwCKVXNtRsKUB373GhXkQ"/>
+<div class="text-center z-10">
+<span class="material-symbols-outlined text-display-lg text-primary/30" data-icon="radar">radar</span>
+<p class="text-label-md text-on-surface font-bold mt-unit">Subject Proficiency Radar</p>
+</div>
+</div>
+<!-- Placeholder for Line Chart -->
+<div class="w-full md:w-1/2 flex items-center justify-center relative bg-surface-container-low/50 rounded-xl border border-dashed border-outline-variant/50">
+<img class="absolute inset-0 w-full h-full object-cover opacity-20 rounded-xl" data-alt="A professional line graph in warm amber colors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT8CnQmA8r-NRJBgDRuARpi27clu5DzmGUOQXfGUroMGIbPPFaTAxs_Tb3MpMa1EtZt9Q_ovaWxKWEEhnsVm3L9GS8Zb3p-0rU0UZFf9x2eD8g0t8Kn_VeKQ5iSpJMT0TKak18PU3-8aRl2zHQlZpNzpeF2BskoOozQojCMajf9gFABr-lwnAvhSBMILBmCLSB5l1conACeQ6feRT6W7y78lR56jaciBJ2I8tEWOJBacUCPMS_hBplGK_g-2EgdO3TM3nqU4ziTA"/>
+<div class="text-center z-10">
+<span class="material-symbols-outlined text-display-lg text-primary/30" data-icon="show_chart">show_chart</span>
+<p class="text-label-md text-on-surface font-bold mt-unit">Attendance vs Grade Correlation</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Subject Deep Dive -->
+<div class="col-span-12 glass-card p-stack-md rounded-xl">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-stack-md mb-stack-md">
+<h4 class="font-headline-md text-on-surface">Subject-wise Detailed Analytics</h4>
+<div class="flex gap-unit">
+<button class="golden-gradient-btn text-white px-stack-sm py-unit rounded-lg text-label-md font-bold">Current Semester</button>
+<button class="bg-surface-container-high text-on-surface-variant px-stack-sm py-unit rounded-lg text-label-md font-bold">All Time</button>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/30">
+<th class="py-stack-sm px-unit text-label-sm uppercase tracking-wider text-on-surface-variant font-bold">Subject Name</th>
+<th class="py-stack-sm px-unit text-label-sm uppercase tracking-wider text-on-surface-variant font-bold text-center">Attendance</th>
+<th class="py-stack-sm px-unit text-label-sm uppercase tracking-wider text-on-surface-variant font-bold text-center">Quiz Avg</th>
+<th class="py-stack-sm px-unit text-label-sm uppercase tracking-wider text-on-surface-variant font-bold text-center">Mid-Term</th>
+<th class="py-stack-sm px-unit text-label-sm uppercase tracking-wider text-on-surface-variant font-bold text-center">Forecast Grade</th>
+<th class="py-stack-sm px-unit text-label-sm uppercase tracking-wider text-on-surface-variant font-bold text-right">Trend</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-stack-md px-unit">
+<div class="flex items-center gap-unit">
+<div class="w-10 h-10 rounded-lg bg-primary-container/20 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Algorithm Lab</span>
+</div>
+</td>
+<td class="py-stack-md px-unit text-center font-body-md text-on-surface">92%</td>
+<td class="py-stack-md px-unit text-center font-body-md text-on-surface">85%</td>
+<td class="py-stack-md px-unit text-center font-body-md text-error font-bold">46/100</td>
+<td class="py-stack-md px-unit text-center">
+<span class="bg-secondary-container text-on-secondary-container px-stack-sm py-0.5 rounded-full text-xs font-bold">A-</span>
+</td>
+<td class="py-stack-md px-unit text-right">
+<span class="material-symbols-outlined text-primary" data-icon="trending_up">trending_up</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-stack-md px-unit">
+<div class="flex items-center gap-unit">
+<div class="w-10 h-10 rounded-lg bg-secondary-container/20 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Data Structure</span>
+</div>
+</td>
+<td class="py-stack-md px-unit text-center font-body-md text-on-surface">88%</td>
+<td class="py-stack-md px-unit text-center font-body-md text-on-surface">78%</td>
+<td class="py-stack-md px-unit text-center font-body-md text-on-surface">74/100</td>
+<td class="py-stack-md px-unit text-center">
+<span class="bg-primary-container text-on-primary-container px-stack-sm py-0.5 rounded-full text-xs font-bold shadow-sm">A</span>
+</td>
+<td class="py-stack-md px-unit text-right">
+<span class="material-symbols-outlined text-primary" data-icon="trending_up">trending_up</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/40 transition-colors group">
+<td class="py-stack-md px-unit">
+<div class="flex items-center gap-unit">
+<div class="w-10 h-10 rounded-lg bg-tertiary-container/20 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined" data-icon="functions">functions</span>
+</div>
+<span class="font-body-md font-semibold text-on-surface">Numerical Methods</span>
+</div>
+</td>
+<td class="py-stack-md px-unit text-center font-body-md text-on-surface">95%</td>
+<td class="py-stack-md px-unit text-center font-body-md text-on-surface">92%</td>
+<td class="py-stack-md px-unit text-center font-body-md text-on-surface">82/100</td>
+<td class="py-stack-md px-unit text-center">
+<span class="bg-tertiary-container text-on-tertiary-container px-stack-sm py-0.5 rounded-full text-xs font-extrabold shadow-sm">A+</span>
+</td>
+<td class="py-stack-md px-unit text-right">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="trending_flat">trending_flat</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB Action (Contextual) -->
+<button class="fixed bottom-gutter right-gutter golden-gradient-btn text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-50">
+<span class="material-symbols-outlined" data-icon="smart_toy">smart_toy</span>
+</button>
+</body></html>
