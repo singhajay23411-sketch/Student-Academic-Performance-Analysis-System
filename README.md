@@ -29,11 +29,7 @@ Students need a simple way to monitor academic performance, identify weak subjec
 - Zustand localStorage persistence
 - FastAPI backend scaffold for planned API and database support
 
-## Screenshots
 
-Add screenshots in this section after deployment or final UI capture.
-
-Suggested screenshots:
 
 - Landing Page
 - Login Page
@@ -43,11 +39,7 @@ Suggested screenshots:
 - Progress Tracking
 - Settings
 
-Current static asset:
 
-```text
-public/assets/screen.png
-```
 
 ## Technology Stack
 
@@ -175,29 +167,9 @@ SAPAS/
   vercel.json
 ```
 
-## Deployment
 
-The frontend is ready for Vercel deployment.
 
-Vercel settings:
 
-- Framework Preset: Vite
-- Build Command: `npm run build`
-- Output Directory: `dist`
-- Install Command: `npm install`
-
-The included `vercel.json` supports client-side routing by rewriting all routes to `index.html`.
-
-## Future Scope
-
-- Connect frontend authentication to the FastAPI backend
-- Persist all user data in PostgreSQL
-- Add role-based access for students, faculty, and administrators
-- Add real AI-powered recommendations
-- Add notification delivery through email or push notifications
-- Add import/export for academic records
-- Add automated tests and CI pipeline
-- Improve bundle splitting for faster production loading
 
 ## Author Information
 
@@ -210,4 +182,4 @@ Project: SAPAS - Student Academic Performance Analytics System
 Frontend: Mostly complete and build-ready  
 Backend: Scaffolded and planned for future database/API integration  
 Persistence: Browser localStorage for current demo phase  
-Deployment: Frontend ready for Vercel
+
